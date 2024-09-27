@@ -21,7 +21,7 @@ popup.style.display="none";
 })
 addSubmit.addEventListener("click",function(e){
  e.preventDefault()
-     if(addUserName.value=="" || typeof(addUserName.value)!=String){
+     if(addUserName.value=="" && typeof(addUserName.value)!=String){
         alert("Plese Enter Name")
         return
      } 
