@@ -10,6 +10,7 @@ let delConfirm = document.querySelector("#delConfirm")
 let users = document.querySelector("#users")
 
 let crosIcon = document.querySelector("#icon")
+let crosIcon2 = document.querySelector("#icon2")
 
 
 
@@ -27,24 +28,44 @@ addSubmit.addEventListener("click",function(e){
      } 
 
       let para =document.createElement("p")
-      let delbtn =document.createElement("button")
-           delbtn.classList="deletepara"
-           delbtn.innerHTML="x"
-           para.append(delbtn) 
 
       para.innerHTML=addUserName.value[0] 
       para.style.textTransform="capitalize"
       users.append(para) 
+
+      let delbtn =document.createElement("span")
+      let delIcon =document.createElement("i")
+      console.log(delIcon)
+           delIcon.classList="fa-solid fa-xmark"
+           delIcon.id="cross"
+           
+           delbtn.append(delIcon) 
+           para.append(delbtn) 
+        //    console.log(span)
+        addUserName.value=""
       users.style.display="block";
      popup.style.display="none";
 
+
      delbtn.addEventListener("click",function(){
-      users.removeChild(para) 
-     })
+        deleteU.style.display="block"
+
+        delCancel.addEventListener("click",function(){
+        deleteU.style.display="none"
+        })
+       
+        delConfirm.addEventListener("click",function(){  
+            users.removeChild(para)
+        deleteU.style.display="none"
+    })
+    })
 })
 
 crosIcon.addEventListener("click",function(){
     popup.style.display="none";
-    deleteU.style.display="none";
     
 })
+crosIcon2.addEventListener("click",function(){
+    deleteU.style.display="none";
+})
+
