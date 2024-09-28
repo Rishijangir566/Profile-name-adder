@@ -13,6 +13,22 @@ let crosIcon = document.querySelector("#icon")
 let crosIcon2 = document.querySelector("#icon2")
 
 
+ let colors =[
+    {backgroundcolor:"black",color:"white"},
+    {backgroundcolor:"purple",color:"white"},
+    {backgroundcolor:"white",color:"black"},
+    {backgroundcolor:"yellow",color:"black"},
+    {backgroundcolor:"red",color:"white"},
+ ];
+
+ 
+ function getRandomColor(){
+    return Math.floor(Math.random()*colors.length)
+    
+ }
+
+
+
 
 adder.addEventListener("click", function(){
    popup.style.display="block";
@@ -31,17 +47,20 @@ addSubmit.addEventListener("click",function(e){
 
       para.innerHTML=addUserName.value[0] 
       para.style.textTransform="capitalize"
+
+      const objColor = colors[getRandomColor()]
+       para.style.backgroundColor=objColor.backgroundcolor
+       para.style.color=objColor.color
       users.append(para) 
 
       let delbtn =document.createElement("span")
       let delIcon =document.createElement("i")
-      console.log(delIcon)
            delIcon.classList="fa-solid fa-xmark"
            delIcon.id="cross"
            
            delbtn.append(delIcon) 
            para.append(delbtn) 
-        //    console.log(span)
+       
         addUserName.value=""
       users.style.display="block";
      popup.style.display="none";
@@ -55,8 +74,8 @@ addSubmit.addEventListener("click",function(e){
         })
        
         delConfirm.addEventListener("click",function(){  
-            users.removeChild(para)
-        deleteU.style.display="none"
+            para.remove()
+            deleteU.style.display="none"
     })
     })
 })
